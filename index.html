@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W13 法國政治發展：互動式助教課程</title>
+    <!-- 載入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 自訂樣式以提升視覺效果 */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .card {
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .tab-button.active {
+            background-color: #3b82f6; /* Blue-500 */
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.5);
+        }
+        .time-label {
+            min-width: 150px; /* 確保計時器標籤不會亂跑 */
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <!-- 標題與計時器 -->
+    <header class="mb-8 p-4 bg-white rounded-xl shadow-lg border-t-4 border-blue-500">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">比較政府與政治：法國政治發展助教課</h1>
+        <div class="flex flex-col md:flex-row md:items-center justify-between text-lg">
+            <p class="text-blue-600 font-semibold time-label">預計時間：30 分鐘</p>
+            <div id="timer-container" class="flex items-center space-x-3 mt-2 md:mt-0">
+                <span id="timer" class="text-3xl font-mono text-red-600">30:00</span>
+                <button id="start-pause-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded-full text-sm shadow-md transition duration-150">開始</button>
+                <button id="reset-btn" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-1 px-3 rounded-full text-sm shadow-md transition duration-150">重置</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 課程流程控制 -->
+    <div class="flex flex-wrap gap-2 mb-8" id="tab-buttons">
+        <button class="tab-button active py-2 px-4 rounded-lg font-semibold transition duration-200" data-tab="step1">
+            (0-5 mins) 課前問題與暖身
+        </button>
+        <button class="tab-button py-2 px-4 rounded-lg font-semibold transition duration-200" data-tab="step2">
+            (5-15 mins) 歷史速覽：五共和國
+        </button>
+        <button class="tab-button py-2 px-4 rounded-lg font-semibold transition duration-200" data-tab="step3">
+            (15-30 mins) 核心辯論：Laïcité
+        </button>
+    </div>
+
+    <!-- 課程內容區域 -->
+    <main id="session-content" class="bg-white p-6 md:p-10 rounded-xl shadow-lg">
+        
+        <!-- 新增：時事速覽/前言區塊 -->
+        <section id="political-overview" class="mb-8 p-6 bg-yellow-50 border-l-4 border-yellow-500 rounded-lg shadow-inner">
+            <h2 class="text-2xl font-bold text-yellow-800 mb-3">時事速覽：法國政局現況</h2>
+            <div class="text-gray-700 space-y-4">
+                <p>
+                    法國實施**雙首長民主共和國制**（總統與總理），總統（現為馬克宏，2022年連任）由兩輪直選產生，任期五年。國會為兩院制（參議院與國民議會），國民議會（577席）直接民選。
+                </p>
+                <p class="border-t pt-3">
+                    **近期動盪與憲政工具：** 2023年政府推行退休金改革時，動用具爭議性的**憲法第49.3條**（法案不經國會表決直接通過），引發大規模抗議。
+                </p>
+                <p class="border-t pt-3">
+                    **國會危機與挑戰：** 2024年6月，馬克宏因極右派在歐洲議會選舉中獲勝而**解散國會**提前選舉。國民議會選舉結果為「新人民陣線 (NFP)」、「復興黨聯盟 (Renaissance)」、「國民聯盟 (RN)」三方鼎立，導致**無任一政黨過半**。政府組閣和推動政策面臨巨大困難（例如，削減財政赤字法案難獲同意），預計將實施中期經濟復甦計畫。
+                </p>
+            </div>
+        </section>
+        
+        <!-- 步驟 1: 課前問題與暖身 (0-5 mins) -->
+        <section id="step1" class="tab-content">
+            <h2 class="text-2xl font-bold text-blue-700 mb-4 border-b pb-2">暖身活動：思考與立場初探</h2>
+            <p class="text-gray-600 mb-6">請同學在紙上或心中思考以下**四個**關鍵問題，並準備簡短分享您的初步看法。助教將會進行簡單的隨機提問。</p>
+
+            <div class="space-y-6">
+                <!-- 問題 1: 2024 奧運禁令的雙重標準 -->
+                <div class="card p-5 bg-blue-50 rounded-lg shadow-md">
+                    <h3 class="font-bold text-xl text-blue-800 mb-2">#1 奧運禁令的矛盾</h3>
+                    <p class="text-gray-700">法國在 2024 奧運的禁令（法籍運動員禁用頭巾）明顯存在雙重標準。法國難道不怕遭到伊斯蘭教人民的反彈嗎？</p>
+                    <p class="text-sm italic text-gray-500 mt-2">（參考 FR1.2：探討法國國家原則與國際規範的衝突）</p>
+                </div>
+
+                <!-- 問題 2: Laïcité 的積極平等界線 -->
+                <div class="card p-5 bg-blue-50 rounded-lg shadow-md">
+                    <h3 class="font-bold text-xl text-blue-800 mb-2">#2 世俗化的最低底線</h3>
+                    <p class="text-gray-700">Laïcité 是否應採取「積極平等」？在尊重教徒的宗教義務與防止宗教權力擴張之間，世俗化應採取的最低底線在哪裡？</p>
+                </div>
+
+                <!-- 問題 3: 自由、平等、博愛與 Laïcité 的延續 -->
+                <div class="card p-5 bg-blue-50 rounded-lg shadow-md">
+                    <h3 class="font-bold text-xl text-blue-800 mb-2">#3 核心價值的困境</h3>
+                    <p class="text-gray-700">法國以「自由、平等、博愛」為立國精神，但為何 Laïcité 卻可以在持續面臨爭議的情況下延續至今？</p>
+                    <p class="text-sm italic text-gray-500 mt-2">（參考 FR1.1：Laïcité 作為法國核心身份認同）</p>
+                </div>
+                
+                <!-- 新增 問題 4: 法國政治元素 -->
+                <div class="card p-5 bg-blue-50 rounded-lg shadow-md">
+                    <h3 class="font-bold text-xl text-blue-800 mb-2">#4 法國政治的特色</h3>
+                    <p class="text-gray-700">你認為法國政治包含了哪些「獨特」的元素？</p>
+                    <p class="text-sm italic text-gray-500 mt-2">（提示：思考國家角色、動盪傳統、共和理念與制度穩定性等面向）</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 步驟 2: 歷史速覽：五共和國 (5-15 mins) -->
+        <section id="step2" class="tab-content hidden">
+            <h2 class="text-2xl font-bold text-blue-700 mb-6 border-b pb-2">法國政治發展歷史速覽：從第一到第五共和國</h2>
+            <p class="text-gray-600 mb-6">法國的政治制度經歷了劇烈的動盪與變革。請點擊下方的卡片，快速回顧各個共和國的關鍵事件與制度特色。</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="history-cards">
+                <!-- 第一共和 -->
+                <div class="card bg-red-100 p-5 rounded-xl shadow cursor-pointer" data-republic="R1">
+                    <h3 class="text-xl font-bold text-red-700">法蘭西第一共和 (1792-1804)</h3>
+                    <p class="text-red-600 text-sm font-semibold">始於大革命，終於拿破崙稱帝。</p>
+                    <p class="hidden mt-3 text-sm text-gray-800 history-detail">
+                        **關鍵：** 經歷國民公會（雅各賓派恐怖統治）、督政府等，政治動盪不安。
+                    </p>
+                </div>
+                <!-- 第二共和 -->
+                <div class="card bg-yellow-100 p-5 rounded-xl shadow cursor-pointer" data-republic="R2">
+                    <h3 class="text-xl font-bold text-yellow-700">法蘭西第二共和 (1848-1852)</h3>
+                    <p class="text-yellow-600 text-sm font-semibold">二月革命短暫的民主，路易拿破崙稱帝結束。</p>
+                    <p class="hidden mt-3 text-sm text-gray-800 history-detail">
+                        **關鍵：** 總統制，但路易拿破崙（拿破崙姪子）透過政變稱帝，開啟第二帝國。
+                    </p>
+                </div>
+                <!-- 第三共和 -->
+                <div class="card bg-green-100 p-5 rounded-xl shadow cursor-pointer" data-republic="R3">
+                    <h3 class="text-xl font-bold text-green-700">法蘭西第三共和 (1870-1940)</h3>
+                    <p class="text-green-600 text-sm font-semibold">持續最久，議會制，政體認同缺乏共識。</p>
+                    <p class="hidden mt-3 text-sm text-gray-800 history-detail">
+                        **關鍵：** 儘管內閣短命，但社會穩定、工業化發展，並確立了政教分離法 (1905)。
+                    </p>
+                </div>
+                <!-- 第四共和 -->
+                <div class="card bg-purple-100 p-5 rounded-xl shadow cursor-pointer" data-republic="R4">
+                    <h3 class="text-xl font-bold text-purple-700">法蘭西第四共和 (1946-1958)</h3>
+                    <p class="text-purple-600 text-sm font-semibold">類似第三共和的議會制，內憂外患而終結。</p>
+                    <p class="hidden mt-3 text-sm text-gray-800 history-detail">
+                        **關鍵：** 多黨議會制導致內閣不穩定，且無法應對阿爾及利亞危機。
+                    </p>
+                </div>
+                <!-- 第五共和 -->
+                <div class="card bg-blue-100 p-5 rounded-xl shadow cursor-pointer" data-republic="R5">
+                    <h3 class="text-xl font-bold text-blue-700">法蘭西第五共和 (1958-)</h3>
+                    <p class="text-blue-600 text-sm font-semibold">戴高樂主導，解決了政治不穩定問題。</p>
+                    <p class="hidden mt-3 text-sm text-gray-800 history-detail">
+                        **關鍵：** 強化總統權力，半總統制，提升政局穩定性，延續至今。
+                    </p>
+                </div>
+            </div>
+            <p class="mt-6 text-sm text-gray-500 italic">點擊卡片以顯示或隱藏該共和國的制度特色。</p>
+        </section>
+
+        <!-- 步驟 3: 核心辯論：Laïcité (15-30 mins) -->
+        <section id="step3" class="tab-content hidden">
+            <h2 class="text-2xl font-bold text-blue-700 mb-4 border-b pb-2">核心辯論：Laïcité 與共和價值</h2>
+            <p class="text-gray-600 mb-6">本節將探討 Laïcité 的核心爭議：世俗國家原則與公民宗教自由的界線。</p>
+
+            <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-8">
+                <h3 class="text-xl font-bold text-red-700 mb-3">辯論主題：Laïcité 的界線</h3>
+                <p class="text-gray-700 font-medium">
+                    **法國應將 Laïcité 重新解釋為「國家中立」，而非要求公民在公共場合移除所有「可見」的宗教符號（如頭巾、罩袍），以平衡「共和價值」與「社群主義」之間的衝突。**
+                </p>
+            </div>
+            
+            <!-- 圖片插入位置：Laïcité 頁面 -->
+            <div class="mb-8 flex justify-center">
+                <!-- 由於 demo.PNG 檔案無法直接存取，這裡使用一個佔位圖片 -->
+                <img src="https://placehold.co/600x300/F0F3FF/667EEA?text=demo.PNG+%E5%9C%96%E7%89%87%E4%BD%8D%E7%BD%AE" 
+                     alt="Laïcité 辯論圖示：佔位圖片" 
+                     class="w-full max-w-xl rounded-lg shadow-xl border border-blue-200"
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x300/F0F3FF/667EEA?text=demo.PNG+%E5%9C%96%E7%89%87%E4%BD%8D%E7%BD%AE';"
+                >
+                <p class="text-center text-sm italic text-gray-500 mt-2">圖：demo.PNG (Laïcité 辯論相關示意圖)</p>
+            </div>
+
+
+            <!-- 校園政教分離憲章 -->
+            <div class="mt-8 p-6 bg-gray-100 rounded-lg shadow-inner">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">《校園政教分離憲章》主要原則 (La Charte de la laïcité)</h3>
+                <p class="text-sm italic text-gray-600 mb-4">（以下為校園世俗化憲章的15項原則摘要）</p>
+                <div class="text-gray-700 space-y-3">
+                    <p class="font-semibold text-blue-700 border-b pb-1">【核心精神】國家委託學校傳遞共和國的價值觀給學生。共和國是世俗的，學校也是世俗的。</p>
+                    <ol class="list-decimal list-inside ml-4 space-y-2 text-sm">
+                        <li>法國是一個不可分割、世俗、民主和社會的共和國。它在全國範圍內保證所有公民的法律平等，並尊重所有信仰。</li>
+                        <li>世俗共和國建立在宗教與國家分離的基礎上。國家對宗教和精神信仰保持中立，沒有國教。</li>
+                        <li>世俗主義保證每個人的良心自由。每個人都可以選擇信仰或不信仰，並在尊重他人信仰及維護公共秩序的前提下表達自己的信仰。</li>
+                        <li>世俗主義允許公民權利的行使，平衡個人自由、平等與兄弟情誼，同時考慮公共利益。</li>
+                        <li>共和國確保每一所學校都遵守這些原則。</li>
+                        <li>學校中的世俗主義為學生提供發展個性、行使自由意志和學習公民意識的條件，並保護他們免受一切形式的傳教和壓力，以便他們自主選擇。</li>
+                        <li>世俗主義確保學生接觸到共享且通用的文化。</li>
+                        <li>在校園運作的框架內，世俗主義允許學生自由表達，並尊重共和價值觀和多元信仰。</li>
+                        <li>世俗主義拒絕一切形式的暴力和歧視，保證男女平等，並以尊重和理解他人為基礎。</li>
+                        <li>所有教職人員負有向學生傳達世俗主義的價值和意義以及共和國基本原則的責任，並在學校範圍內監督這些原則的實行。他們還負責讓家長了解這份憲章。</li>
+                        <li>教職人員必須保持嚴格的中立：在行使職責時不得表達個人信仰（宗教或政治）。</li>
+                        <li>課程是世俗的，確保學生以客觀開放的態度了解多元世界觀，並獲得廣泛而精確的知識，所有主題都可進行科學和教育上的探討。學生不得以宗教或政治信仰為理由拒絕教師對話題的討論。</li>
+                        <li>無人能以宗教歸屬為理由拒絕遵守學校或共和國的規則。</li>
+                        <li>在每所公立學校，依內部規定制定的某些空間生活規則尊重世俗主義，禁止穿戴明顯表達宗教信仰的標誌或服飾。</li>
+                        <li>學生通過思考和活動，共同實踐校園中的世俗主義。</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- 參考資料區塊 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                <div class="bg-indigo-100 p-4 rounded-lg">
+                    <h4 class="font-bold text-indigo-800">主要概念：共和價值 (Republicanism)</h4>
+                    <ul class="list-disc list-inside text-sm text-gray-800 mt-2 space-y-1">
+                        <li>**目標：** 建立統一的公民身份，消除社會分歧。</li>
+                        <li>**原則：** 平等公民身份、同化、公共空間中立。</li>
+                        <li>**應用：** 禁止學校和公職人員穿戴明顯宗教符號 (2004, 2010)。</li>
+                    </ul>
+                </div>
+                <div class="bg-pink-100 p-4 rounded-lg">
+                    <h4 class="font-bold text-pink-800">主要概念：社群主義 (Communitarianism)</h4>
+                    <ul class="list-disc list-inside text-sm text-gray-800 mt-2 space-y-1">
+                        <li>**目標：** 國家應保障和尊重少數群體的文化和宗教權利。</li>
+                        <li>**原則：** 宗教自由、多元文化、包容性。</li>
+                        <li>**批評：** 現行 Laïcité 實質上歧視了非基督教信仰（如穆斯林）。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 互動式投票/表決區 -->
+            <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-inner mt-8">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">全班表態：您對此辯論主題的立場是？</h3>
+                <div class="flex flex-col md:flex-row gap-4">
+                    <button onclick="vote('for')" class="w-full md:w-1/2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow-lg transition duration-150 transform hover:scale-105">
+                        <span id="votes-for">0</span> 票 - <span class="text-lg">贊成此提議</span>
+                    </button>
+                    <button onclick="vote('against')" class="w-full md:w-1/2 bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl shadow-lg transition duration-150 transform hover:scale-105">
+                        <span id="votes-against">0</span> 票 - <span class="text-lg">反對此提議</span>
+                    </button>
+                </div>
+                <div class="mt-4 bg-gray-200 rounded-full h-4">
+                    <div id="vote-bar" class="bg-blue-500 h-4 rounded-full" style="width: 50%;"></div>
+                </div>
+                <p id="vote-summary" class="text-center mt-2 text-sm text-gray-600">目前總票數：0 票 (贊成率：0%)</p>
+                <button onclick="resetVotes()" class="mt-4 text-sm text-gray-500 hover:text-gray-700 underline">重置投票</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JavaScript 邏輯 -->
+    <script>
+        // --- 計時器邏輯 ---
+        let totalSeconds = 30 * 60; // 30 分鐘
+        let secondsElapsed = 0;
+        let timerInterval;
+        let isRunning = false;
+        const timerDisplay = document.getElementById('timer');
+        const startPauseBtn = document.getElementById('start-pause-btn');
+        const resetBtn = document.getElementById('reset-btn');
+
+        function formatTime(seconds) {
+            const min = Math.floor(seconds / 60);
+            const sec = seconds % 60;
+            return `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+        }
+
+        function updateTimer() {
+            if (secondsElapsed >= totalSeconds) {
+                clearInterval(timerInterval);
+                isRunning = false;
+                startPauseBtn.textContent = '已結束';
+                startPauseBtn.disabled = true;
+                timerDisplay.classList.add('animate-pulse');
+                return;
+            }
+            secondsElapsed++;
+            const remainingTime = totalSeconds - secondsElapsed;
+            timerDisplay.textContent = formatTime(remainingTime);
+        }
+
+        startPauseBtn.addEventListener('click', () => {
+            if (isRunning) {
+                clearInterval(timerInterval);
+                startPauseBtn.textContent = '繼續';
+            } else {
+                timerInterval = setInterval(updateTimer, 1000);
+                startPauseBtn.textContent = '暫停';
+            }
+            isRunning = !isRunning;
+        });
+
+        resetBtn.addEventListener('click', () => {
+            clearInterval(timerInterval);
+            secondsElapsed = 0;
+            isRunning = false;
+            startPauseBtn.textContent = '開始';
+            startPauseBtn.disabled = false;
+            timerDisplay.textContent = formatTime(totalSeconds);
+            timerDisplay.classList.remove('animate-pulse');
+        });
+
+        // 初始化顯示
+        timerDisplay.textContent = formatTime(totalSeconds);
+
+        // --- 頁面流程（Tab）邏輯 ---
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.dataset.tab;
+
+                // 移除所有按鈕的 active 狀態
+                tabButtons.forEach(btn => btn.classList.remove('active', 'bg-blue-500', 'text-white'));
+                // 隱藏所有內容
+                tabContents.forEach(content => content.classList.add('hidden'));
+
+                // 設定點擊按鈕為 active
+                button.classList.add('active', 'bg-blue-500', 'text-white');
+                // 顯示目標內容
+                document.getElementById(targetTab).classList.remove('hidden');
+            });
+        });
+
+        // --- 步驟 2: 歷史卡片互動邏輯 ---
+        document.querySelectorAll('#history-cards .card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                // 點擊卡片，切換歷史細節的顯示狀態
+                const detail = card.querySelector('.history-detail');
+                detail.classList.toggle('hidden');
+                
+                // 簡易的視覺反饋
+                if (!detail.classList.contains('hidden')) {
+                    card.classList.add('border-4', 'border-opacity-50');
+                } else {
+                    card.classList.remove('border-4', 'border-opacity-50');
+                }
+            });
+        });
+
+        // --- 步驟 3: 投票邏輯 ---
+        let votes = {
+            for: 0,
+            against: 0
+        };
+
+        const votesForDisplay = document.getElementById('votes-for');
+        const votesAgainstDisplay = document.getElementById('votes-against');
+        const voteBar = document.getElementById('vote-bar');
+        const voteSummary = document.getElementById('vote-summary');
+
+        function updateVoteDisplay() {
+            const totalVotes = votes.for + votes.against;
+            const forPercentage = totalVotes === 0 ? 50 : (votes.for / totalVotes) * 100;
+
+            votesForDisplay.textContent = votes.for;
+            votesAgainstDisplay.textContent = votes.against;
+            voteBar.style.width = `${forPercentage}%`;
+            voteSummary.textContent = `目前總票數：${totalVotes} 票 (贊成率：${forPercentage.toFixed(1)}%)`;
+            
+            // 根據結果調整進度條顏色
+            if (forPercentage > 50) {
+                voteBar.className = 'bg-blue-500 h-4 rounded-full';
+            } else if (forPercentage < 50) {
+                voteBar.className = 'bg-red-500 h-4 rounded-full';
+            } else {
+                voteBar.className = 'bg-gray-400 h-4 rounded-full';
+            }
+        }
+
+        window.vote = function(type) {
+            votes[type]++;
+            updateVoteDisplay();
+        };
+
+        window.resetVotes = function() {
+            votes.for = 0;
+            votes.against = 0;
+            updateVoteDisplay();
+        };
+
+        // 首次載入時初始化投票顯示
+        updateVoteDisplay();
+        
+    </script>
+
+</body>
+</html>
